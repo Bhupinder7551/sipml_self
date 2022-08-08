@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- CSS only -->
+    <!-- JavaScript Bundle with Popper -->
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container_">
+      <h2>Register With Sipml5 User <i class="fa-solid fa-user-plus"></i></h2>
+      <div class="row mt-lg-4 mb-3 registerform">
+        <div class="col-6">
+          <h5>Register</h5>
+         <h5> <label style="width: 100%;" align="center" id="txtRegStatus"></label></h5>
+        </label>
+          <br>
+          <div class="row">
+            <div class="col-5" >
+              <label>Display Name: </label><br>
+              <label>Private Identity: </label><br>
+              <label>Public Identity: </label><br>
+              <label>Password: </label><br>
+              <label>Realm: </label><br>
+              <label>WebSocket Server URL: </label><br>
+              <label>SIP outbound Proxy URL: </label><br>
+            </div>
+
+            <div class="col-7" >
+              <input style="width: 100%" type="text" id="txtDisplayName" value="641234567891"/>
+              <input style="width: 100%" type="text" id="txtPrivateIdentity" value="641234567891"  />
+              <input style="width: 100%" type="text" id="txtPublicIdentity" value="sip:641234567891@conf.nitoville.com" />
+              <input style="width: 100%" type="text" id="txtPassword" placeholder="*******" value="" />
+              <input style="width: 100%" type="text" id="txtRealm"  value="conf.nitoville.com"/>
+              <input style="width: 100%" type="text" id="txtWebsocketServerUrl"  value="wss://conf.nitoville.com:7443"/>
+              <input style="width: 100%" type="text" id="txtSIPOutboundProxyUrl" value="tls://conf.nitoville.com:7443"/>
+           <div class="float-right">
+              <input type="button" class="btn btn-success" id="btnRegister" value="LogIn" disabled onclick='sipRegister();' />
+              &nbsp;
+              <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" disabled onclick='sipUnRegister();' />
+            </div>
+            </div>
+            
+                  </div>
+        </div>
+        <div class="col-6" >
+   
+          <img
+            src="./images/pexels-reynaldo-brigworkz-brigantty-747114-removebg-preview.png"
+            width="420"
+            height="340"
+            alt="phone image"
+          />
+        </div>
+      </div>
+      <h2>Call User <i class="fa-solid fa-phone mt-5"></i></h2>
+      <h5> <label style="width: 100%;" align="center" id="txtCallStatus"></label></h5>
+      
+      <div class="row mt-lg-4 mb-3">
+        <div class="col-4">
+          <h5>Local video</h5>
+          <video
+            id="video-local"
+            width="420"
+            height="340"
+            controls
+            autoplay
+            muted
+          ></video>
+        </div>
+        <div class="col-4">
+          <h5>Remote video</h5>
+          <video
+            id="video-remote"
+            width="420"
+            height="340"
+            controls
+            autoplay
+          ></video>
+        </div>
+        <div class="col-4">
+          <h5>Enter phone Number</h5>
+
+          <input type="text" id="txtPhoneNumber" />
+
+          <button  onclick='sipCall("call-audiovideo")' id="btnCall" disabled class="btn btn-success">
+            <i class="fa-solid fa-phone"></i> <i>Call</i>
+          </button>  
+            <button id="btnHangUp" onclick='sipHangUp()' disabled class="btn btn-danger">                
+             <i class='fas fa-phone-slash'></i> <i>End</i>
+          </button>
+        </div>
+      </div>
+      <div class="row m-3">
+        <button class="btn mr-2">
+          <i class="fa-solid fa-microphone-slash"></i>
+        </button>
+        <button class="btn mr-2"><i class="fa-solid fa-play"></i></button>
+        <button class="btn mr-2">
+          <i class="fa-solid fa-video-slash"></i>
+        </button>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./SIPml-api.js"></script>
+
+    <script src="./server.js"></script>
+  
+      <!-- Audios -->
+       
+  </body>
+</html>

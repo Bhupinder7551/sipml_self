@@ -1,0 +1,29 @@
+.container_ {
+  padding: 5rem;
+}
+
+.container_ h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  letter-spacing: 13px;
+  margin-bottom: 3rem;
+}
+
+.container_ h5 {
+  font-family: "Square Peg", cursive;
+}
+
+.container_ .textarea_reg {
+  width: 100%;
+}
+
+.registerform input {
+  border: 1px solid #c4c4c4;
+  margin-bottom: 3px;
+  border-top: none;
+  border-left: none;
+}
+/*# sourceMappingURL=style.css.map */
